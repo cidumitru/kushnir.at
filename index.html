@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kushnir Wien - Meisterwerkstatt</title>
+    <meta name="description" content="Meisterwerkstatt für Restaurierung und Pflege. Demnächst online.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- General Setup --- */
+        :root {
+            --color-text: #EAEAEA; /* A soft, elegant off-white */
+            --color-gold: #C0A172; /* A muted, old-world gold */
+            --color-background: #1A1A1A; /* A deep, rich charcoal, not quite black */
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Jost', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Background Image --- */
+        /* This creates the atmospheric, luxury feel. */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* Replace this URL with your own high-quality photo */
+            background-image: url('https://images.unsplash.com/photo-1620794324855-3D757f352302?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* The dark overlay ensures text is readable and adds to the mood. */
+        .background-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(20, 20, 20, 0.85); /* Rich dark overlay */
+            backdrop-filter: blur(4px); /* A subtle blur for a sophisticated effect */
+        }
+        
+        /* --- Content Styling --- */
+        .content-wrapper {
+            max-width: 650px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        /* The main name, styled to look like an established logotype */
+        .brand-name {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* The tagline communicates the core value proposition */
+        h1 {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            color: var(--color-gold);
+            margin: 0.5rem 0 2rem 0;
+            text-transform: uppercase;
+        }
+        
+        /* The main message */
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        /* Contact information is presented clearly and elegantly */
+        .contact-info {
+            border-top: 1px solid var(--color-gold);
+            padding-top: 2rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-info strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-gold);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        
+        .contact-info a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #FFFFFF;
+        }
+        
+        /* --- Responsive Design --- */
+        @media (max-width: 600px) {
+            .brand-name {
+                font-size: 2.5rem;
+            }
+            h1 {
+                font-size: 1rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="background-container"></div>
+
+    <div class="content-wrapper">
+        <h2 class="brand-name">KUSHNIR</h2>
+        
+        <h1>Die Kunst der Erhaltung</h1>
+        
+        <p>
+            Unsere neue Online-Präsenz befindet sich derzeit in Arbeit. Für Anfragen zur Restaurierung und Pflege Ihrer wertvollsten Stücke stehen wir Ihnen wie gewohnt persönlich zur Verfügung.
+        </p>
+
+        <div class="contact-info">
+            <strong>Kontaktieren Sie die Meisterwerkstatt</strong>
+            Hermanngasse 2A, 1070 Wien<br>
+            <a href="tel:‭+4369010545862‬">‭+43 690 10545862‬</a>
+        </div>
+    </div>
+
+</body>
+</html>
