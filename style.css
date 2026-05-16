@@ -336,7 +336,7 @@ body {
 }
 .testimonials-header {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr auto;
   gap: 3rem;
   align-items: end;
   margin-bottom: 4rem;
@@ -355,10 +355,18 @@ body {
   font-weight: 400;
 }
 .rating-line {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
   font-family: var(--serif);
   font-style: italic;
   color: var(--ink-soft);
   font-size: 1.05rem;
+}
+.rating-line .stars {
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  font-style: normal;
 }
 .rating-line .score {
   color: var(--accent);
@@ -367,8 +375,6 @@ body {
   font-family: var(--sans);
   letter-spacing: 0.05em;
 }
-.rating-line .stars { color: var(--accent); }
-.rating-line a { color: var(--ink-soft); }
 .reviews-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -450,15 +456,6 @@ body {
   border-radius: 0;
 }
 .show-all-btn:hover { background: var(--ink); color: var(--bg); }
-.show-all-btn .show-count {
-  font-family: var(--serif);
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0;
-  color: var(--ink-soft);
-  font-size: 0.85rem;
-}
-.show-all-btn:hover .show-count { color: var(--bg-2); }
 .see-all-line {
   font-family: var(--serif);
   font-style: italic;

@@ -2,10 +2,10 @@
   "htmlLang": "de",
   "docTitle": "Atelier Kushnir — Wien",
 
-  "est": "Meisterwerkstatt — Seit 1992",
+  "est": "Atelier — Seit 1992",
   "eyebrow": "Wien · 1070",
-  "tagline": "Werkstatt seit 1992.",
-  "intro1": "Eine Familienwerkstatt in Wien für Stücke, an denen Sie hängen.",
+  "tagline": "Seit 1992.",
+  "intro1": "Ein Familienatelier in Wien für Stücke, an denen Sie hängen.",
   "intro2": "Schuhe, Taschen, Lederwaren, von täglichen Begleitern bis zu den grossen Häusern. Jedes Stück verdient eine ehrliche Beurteilung und eine sorgfältige Hand.",
   "signoff": "— Familie Kushnir",
 
@@ -50,7 +50,6 @@
 
   "t_eb": "Stimmen unserer Kunden",
   "t_h": "Was Menschen sagen.",
-  "t_basis": "— basierend auf {count} Google-Bewertungen",
   "t_see_label": "Oder selbst eine schreiben — ",
   "t_see_link": "auf Google",
   "t_show_all": "Alle Bewertungen anzeigen",

@@ -66,8 +66,15 @@ function applyTranslations() {
     b.classList.toggle('active', b.dataset.lang === state.lang);
   });
 
-  renderRatingLine();
+  renderRating();
   renderReviews();
+}
+
+function renderRating() {
+  if (!state.reviews) return;
+  const { rating, best_rating } = state.reviews.summary;
+  const score = document.getElementById('ratingScore');
+  if (score) score.textContent = `${rating.toFixed(1)} / ${best_rating}`;
 }
 
 async function setLanguage(lang) {
@@ -117,18 +124,7 @@ function renderReviews() {
   }).join('');
 
   const btnLabel = document.querySelector('#showAllReviewsBtn [data-role="show-label"]');
-  const btnCount = document.getElementById('showCount');
   if (btnLabel) btnLabel.textContent = state.expandedReviews ? t('t_show_less') : t('t_show_all');
-  if (btnCount) btnCount.textContent = state.expandedReviews ? '' : `(${items.length})`;
-}
-
-function renderRatingLine() {
-  const el = document.getElementById('ratingBasis');
-  if (!el || !state.reviews) return;
-  el.textContent = t('t_basis', { count: state.reviews.summary.count });
-
-  const score = document.getElementById('ratingScore');
-  if (score) score.textContent = `${state.reviews.summary.rating.toFixed(1)} / ${state.reviews.summary.best_rating}`;
 }
 
 function injectReviewSchema() {
@@ -228,8 +224,7 @@ function pickInitialLang() {
     const saved = localStorage.getItem('lang');
     if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
   } catch (_) { /* ignore */ }
-  const nav = (navigator.language || DEFAULT_LANG).toLowerCase().slice(0, 2);
-  return SUPPORTED_LANGS.includes(nav) ? nav : DEFAULT_LANG;
+  return DEFAULT_LANG;
 }
 
 async function boot() {
