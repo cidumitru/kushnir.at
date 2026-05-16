@@ -1,459 +1,248 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kushnir Wien - Meisterwerkstatt</title>
-    <meta name="description" content="Meisterwerkstatt für Restaurierung und Pflege. Demnächst online.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Kushnir — Wien</title>
+  <meta name="description" content="Familiengeführte Meisterwerkstatt in Wien. Schuhreparatur, Lederpflege, Schlüsseldienst.">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --color-text: #EAEAEA;
-            --color-gold: #C0A172;
-            --color-background: #1A1A1A;
-            --color-whatsapp: #25D366;
-            --color-whatsapp-dark: #1da851;
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Jost', sans-serif;
-        }
+  <link rel="stylesheet" href="style.css">
 
-        html, body {
-            margin: 0;
-            padding: 0;
-        }
+  <script type="application/ld+json" id="business-schema">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://kushnir.at/#workshop",
+    "name": "Atelier Kushnir",
+    "alternateName": ["Kushnir Wien", "Schuh und Schlüsselservice"],
+    "description": "Familiengeführte Meisterwerkstatt für Schuhreparatur, Lederpflege und Schlüsseldienst im 7. Wiener Gemeindebezirk.",
+    "image": "https://kushnir.at/og-image.jpg",
+    "url": "https://kushnir.at",
+    "telephone": "+43 690 10545862",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Hermanngasse 2A",
+      "addressLocality": "Wien",
+      "postalCode": "1070",
+      "addressCountry": "AT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.2014,
+      "longitude": 16.3464
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }],
+    "sameAs": [
+      "https://www.instagram.com/atelierkushnir/",
+      "https://www.facebook.com/atelierkushnir",
+      "https://maps.app.goo.gl/A3tJbrhKvgd1i7tw9"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "50",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
 
-        body {
-            font-family: var(--font-sans);
-            color: var(--color-text);
-            background-color: var(--color-background);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            text-align: center;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-
-        .background-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-image: url('https://images.unsplash.com/photo-1620794324855-3D757f352302?q=80&w=2070');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .background-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(20, 20, 20, 0.85);
-            backdrop-filter: blur(4px);
-        }
-
-        .content-wrapper {
-            max-width: 650px;
-            width: 100%;
-            margin: auto 0;
-            padding: 2.5rem 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background-color: rgba(0, 0, 0, 0.35);
-            border-radius: 4px;
-            position: relative;
-            box-sizing: border-box;
-        }
-
-        .language-switcher {
-            position: absolute;
-            top: 1rem;
-            right: 1.25rem;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .language-switcher button {
-            background: none;
-            border: none;
-            color: inherit;
-            font-family: inherit;
-            font-size: inherit;
-            letter-spacing: inherit;
-            cursor: pointer;
-            padding: 0.25rem 0.4rem;
-            text-transform: uppercase;
-            transition: color 0.2s ease;
-        }
-
-        .language-switcher button:hover {
-            color: #FFFFFF;
-        }
-
-        .language-switcher button.active {
-            color: var(--color-gold);
-        }
-
-        .language-switcher .sep {
-            opacity: 0.4;
-        }
-
-        .brand-name {
-            font-family: var(--font-serif);
-            font-size: 3.5rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            color: #FFFFFF;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        h1 {
-            font-family: var(--font-sans);
-            font-weight: 300;
-            font-size: 1.25rem;
-            letter-spacing: 1px;
-            color: var(--color-gold);
-            margin: 0.5rem 0 2rem 0;
-            text-transform: uppercase;
-        }
-
-        .intro {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            max-width: 500px;
-            margin: 0 auto 2.5rem auto;
-        }
-
-        .lead-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: left;
-            max-width: 480px;
-            margin: 0 auto 2rem auto;
-        }
-
-        .form-field {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .form-field label {
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--color-gold);
-        }
-
-        .form-field input,
-        .form-field select,
-        .form-field textarea {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            color: var(--color-text);
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 4px;
-            padding: 0.75rem 0.9rem;
-            outline: none;
-            transition: border-color 0.2s ease, background-color 0.2s ease;
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        .form-field textarea {
-            resize: vertical;
-            min-height: 110px;
-            font-family: var(--font-sans);
-        }
-
-        .form-field select {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23C0A172' d='M6 8L0 0h12z'/></svg>");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            padding-right: 2.5rem;
-        }
-
-        .form-field select option {
-            background-color: var(--color-background);
-            color: var(--color-text);
-        }
-
-        .form-field input:focus,
-        .form-field select:focus,
-        .form-field textarea:focus {
-            border-color: var(--color-gold);
-            background-color: rgba(255, 255, 255, 0.08);
-        }
-
-        .form-field input::placeholder,
-        .form-field textarea::placeholder {
-            color: rgba(255, 255, 255, 0.35);
-        }
-
-        .submit-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            margin-top: 0.75rem;
-            padding: 1rem 1.5rem;
-            background-color: var(--color-whatsapp);
-            color: #FFFFFF;
-            border: none;
-            border-radius: 8px;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background-color: var(--color-whatsapp-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
-        .submit-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: #FFFFFF;
-        }
-
-        .contact-info {
-            border-top: 1px solid var(--color-gold);
-            padding-top: 1.75rem;
-            margin-top: 0.5rem;
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .contact-info strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--color-gold);
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 600px) {
-            .content-wrapper {
-                padding: 3.25rem 1.25rem 2rem 1.25rem;
-            }
-            .brand-name {
-                font-size: 2.5rem;
-            }
-            h1 {
-                font-size: 1rem;
-            }
-            .intro {
-                font-size: 0.95rem;
-            }
-            .submit-btn {
-                padding: 0.9rem 1.2rem;
-                font-size: 0.95rem;
-            }
-        }
-    </style>
+  <script src="main.js" defer></script>
 </head>
 <body>
 
-    <div class="background-container"></div>
+<header class="topbar">
+  <div class="est" data-i18n="est">Meisterwerkstatt — Seit 1992</div>
+  <nav class="lang" aria-label="Sprache">
+    <button data-lang="de" class="active">DE</button>
+    <span>·</span>
+    <button data-lang="en">EN</button>
+  </nav>
+</header>
 
-    <div class="content-wrapper">
-        <nav class="language-switcher" aria-label="Language">
-            <button type="button" data-lang="de" class="active">DE</button><span class="sep">|</span><button type="button" data-lang="en">EN</button>
-        </nav>
+<section class="hero">
+  <div>
+    <div class="eyebrow" data-i18n="eyebrow">Wien · 1070</div>
+    <h1 class="brand">Atelier<br><em>Kushnir</em></h1>
+    <p class="tagline" data-i18n="tagline">Werkstatt seit 1992.</p>
+  </div>
+  <div class="hero-meta">
+    <p data-i18n="intro1">Eine Familienwerkstatt in Wien für Stücke, an denen Sie hängen.</p>
+    <p data-i18n="intro2">Schuhe, Taschen, Lederwaren, von täglichen Begleitern bis zu den grossen Häusern. Jedes Stück verdient eine ehrliche Beurteilung und eine sorgfältige Hand.</p>
+    <p class="signoff" data-i18n="signoff">— Familie Kushnir</p>
+  </div>
+</section>
 
-        <h2 class="brand-name">KUSHNIR</h2>
-        <h1 data-i18n="tagline">Die Kunst der Erhaltung</h1>
+<section class="services">
+  <div class="svc">
+    <div class="svc-num">N° 01</div>
+    <h3 class="svc-name" data-i18n="s1_name">Schuhreparatur</h3>
+    <p class="svc-desc" data-i18n="s1_desc">Sohlen, Absätze, Nähte. Für Schuhe, die noch viele Jahre gehen sollen.</p>
+  </div>
+  <div class="svc">
+    <div class="svc-num">N° 02</div>
+    <h3 class="svc-name" data-i18n="s2_name">Lederpflege</h3>
+    <p class="svc-desc" data-i18n="s2_desc">Reinigung, Farbauffrischung, Reparaturen für Taschen und feines Leder.</p>
+  </div>
+  <div class="svc">
+    <div class="svc-num">N° 03</div>
+    <h3 class="svc-name" data-i18n="s3_name">Auch Schlüsseldienst</h3>
+    <p class="svc-desc" data-i18n="s3_desc">Schlüssel, Zylinder, Schliessanlagen.</p>
+  </div>
+</section>
 
-        <p class="intro" data-i18n="intro">
-            Schicken Sie uns Ihre Anfrage zur Restaurierung oder Reparatur. Wir antworten persönlich über WhatsApp.
-        </p>
+<aside class="declaration">
+  <div class="declaration-inner">
+    <span class="declaration-eyebrow" data-i18n="decl_eb">Bearbeitungszeit</span>
+    <p class="declaration-body" data-i18n="decl_body">Restaurationen meist zwei bis vier Wochen. Ihr Stück bekommt die Zeit, die es braucht.</p>
+  </div>
+</aside>
 
-        <form class="lead-form" id="leadForm" novalidate>
-            <div class="form-field">
-                <label for="name" data-i18n="label_name">Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    autocomplete="name"
-                    data-i18n-placeholder="placeholder_name"
-                    placeholder="Ihr Name"
-                >
-            </div>
+<section class="main">
+  <div>
+    <div class="section-eyebrow" data-i18n="form_eyebrow">Anfrage</div>
+    <h2 class="section-head" data-i18n="form_head">Was sollen wir uns ansehen?</h2>
+    <p class="form-intro" data-i18n="form_intro">Beschreiben Sie Ihr Stück, schicken Sie gerne ein paar Fotos. Wir melden uns persönlich über WhatsApp.</p>
 
-            <div class="form-field">
-                <label for="category" data-i18n="label_category">Kategorie</label>
-                <select id="category" name="category" required>
-                    <option value="" disabled selected data-i18n="placeholder_category">Bitte auswählen</option>
-                    <option value="shoes" data-i18n="cat_shoes">Schuhe</option>
-                    <option value="bags" data-i18n="cat_bags">Taschen</option>
-                    <option value="leather" data-i18n="cat_leather">Lederwaren</option>
-                    <option value="other" data-i18n="cat_other">Sonstiges</option>
-                    <option value="keys" data-i18n="cat_keys">Schlüssel</option>
-                </select>
-            </div>
+    <form class="form" id="leadForm" novalidate>
+      <div class="field">
+        <label for="name" data-i18n="l_name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name"
+               data-i18n-ph="ph_name" placeholder="Ihr Name">
+      </div>
 
-            <div class="form-field">
-                <label for="description" data-i18n="label_description">Beschreibung des Schadens</label>
-                <textarea
-                    id="description"
-                    name="description"
-                    required
-                    rows="4"
-                    data-i18n-placeholder="placeholder_description"
-                    placeholder="Beschreiben Sie kurz das Problem oder den gewünschten Service…"
-                ></textarea>
-            </div>
+      <div class="field">
+        <label for="category" data-i18n="l_cat">Kategorie</label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected data-i18n="ph_cat">Bitte auswählen</option>
+          <option value="shoes"   data-i18n="c_shoes">Schuhe</option>
+          <option value="bags"    data-i18n="c_bags">Taschen</option>
+          <option value="leather" data-i18n="c_leather">Lederwaren</option>
+          <option value="keys"    data-i18n="c_keys">Schlüssel</option>
+          <option value="other"   data-i18n="c_other">Sonstiges</option>
+        </select>
+      </div>
 
-            <button type="submit" class="submit-btn">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                </svg>
-                <span data-i18n="submit">Anfrage über WhatsApp senden</span>
-            </button>
-        </form>
+      <div class="field">
+        <label for="description" data-i18n="l_desc">Beschreibung</label>
+        <textarea id="description" name="description" required
+                  data-i18n-ph="ph_desc"
+                  placeholder="Beschreiben Sie kurz das Problem oder den gewünschten Service…"></textarea>
+      </div>
 
-        <div class="contact-info">
-            <strong data-i18n="contact_heading">Meisterwerkstatt</strong>
-            Hermanngasse 2A, 1070 Wien
-        </div>
+      <button type="submit" class="submit">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <span data-i18n="submit">Über WhatsApp senden</span>
+      </button>
+    </form>
+  </div>
+
+  <div>
+    <div class="section-eyebrow" data-i18n="visit_eyebrow">Besuch</div>
+    <h2 class="section-head" data-i18n="visit_head">Wann Sie uns finden.</h2>
+    <div class="contact-card">
+      <div class="contact-row"><span class="day" data-i18n="d_mon">Montag</span><span>8:00 — 18:00</span></div>
+      <div class="contact-row"><span class="day" data-i18n="d_tue">Dienstag</span><span>8:00 — 18:00</span></div>
+      <div class="contact-row"><span class="day" data-i18n="d_wed">Mittwoch</span><span>8:00 — 18:00</span></div>
+      <div class="contact-row"><span class="day" data-i18n="d_thu">Donnerstag</span><span>8:00 — 18:00</span></div>
+      <div class="contact-row"><span class="day" data-i18n="d_fri">Freitag</span><span>8:00 — 18:00</span></div>
+      <div class="contact-row"><span class="day" data-i18n="d_sat">Samstag</span><span class="closed" data-i18n="closed">geschlossen</span></div>
+      <div class="contact-row"><span class="day" data-i18n="d_sun">Sonntag</span><span class="closed" data-i18n="closed">geschlossen</span></div>
+      <div class="address">
+        <strong data-i18n="addr_name">Atelier Kushnir</strong>
+        <div class="small">Hermanngasse 2A · 1070 Wien</div>
+        <div class="small" data-i18n="addr_transit">U3 Neubaugasse · Bus 13A, 48A, 49</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-section" id="reviews">
+  <div class="testimonials-header">
+    <div>
+      <div class="section-eyebrow" data-i18n="t_eb">Stimmen unserer Kunden</div>
+      <h2 data-i18n="t_h">Was Menschen sagen.</h2>
+    </div>
+    <div class="rating-line">
+      <span class="stars">★★★★★</span>
+      <span class="score" id="ratingScore">4.9 / 5</span>
+      <span id="ratingBasis">— basierend auf 50 Google-Bewertungen</span>
+    </div>
+  </div>
+  <!-- Reviews are rendered from data/reviews.json. All cards are inserted so SEO indexes every review even when "Show all" hides the lower rows visually. -->
+  <div class="reviews-list" id="reviews-list" data-expanded="false"></div>
+  <div class="reviews-controls">
+    <button type="button" id="showAllReviewsBtn" class="show-all-btn">
+      <span data-role="show-label">Alle Bewertungen anzeigen</span>
+      <span class="show-count" id="showCount"></span>
+    </button>
+    <div class="see-all-line">
+      <span data-i18n="t_see_label">Oder selbst eine schreiben — </span>
+      <a href="https://maps.app.goo.gl/A3tJbrhKvgd1i7tw9" target="_blank" rel="noopener" data-i18n="t_see_link">auf Google</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-row footer-row--top">
+    <div class="footer-brand">
+      <div class="mark">Atelier Kushnir</div>
+      <div class="footer-addr" data-i18n="footer_addr">Hermanngasse 2A · 1070 Wien</div>
     </div>
 
-    <script>
-        const WHATSAPP_NUMBER = '4369010545862';
+    <nav class="footer-social" aria-label="Social media">
+      <a href="https://www.instagram.com/atelierkushnir/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.86 5.86 0 0 0-2.13 1.38A5.86 5.86 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91a5.86 5.86 0 0 0 1.38 2.13 5.86 5.86 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.86 5.86 0 0 0 2.13-1.38 5.86 5.86 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.86 5.86 0 0 0-1.38-2.13A5.86 5.86 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+        <span>Instagram</span>
+      </a>
+      <a href="https://maps.app.goo.gl/A3tJbrhKvgd1i7tw9" target="_blank" rel="noopener" aria-label="Google">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M21.35 11.1H12v2.8h5.35c-.5 2.5-2.6 4.3-5.35 4.3-3.2 0-5.8-2.6-5.8-5.8s2.6-5.8 5.8-5.8c1.5 0 2.85.55 3.9 1.45l2.1-2.1A8.85 8.85 0 0 0 12 3.2c-4.85 0-8.8 3.95-8.8 8.8s3.95 8.8 8.8 8.8c5.1 0 8.45-3.6 8.45-8.65 0-.5-.05-.85-.1-1.05z"/></svg>
+        <span data-i18n="social_google">Google</span>
+      </a>
+      <a href="https://www.facebook.com/atelierkushnir" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M22.68 0H1.32C.59 0 0 .59 0 1.32v21.36C0 23.41.59 24 1.32 24h11.49v-9.3H9.69v-3.62h3.12V8.41c0-3.1 1.89-4.79 4.66-4.79 1.32 0 2.46.1 2.79.14v3.24l-1.92.01c-1.5 0-1.8.71-1.8 1.76v2.31h3.59l-.47 3.62h-3.12V24h6.13c.73 0 1.32-.59 1.32-1.32V1.32C24 .59 23.41 0 22.68 0z"/></svg>
+        <span>Facebook</span>
+      </a>
+      <a href="https://wa.me/4369010545862" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+    </nav>
 
-        const translations = {
-            de: {
-                htmlLang: 'de',
-                docTitle: 'Kushnir Wien - Meisterwerkstatt',
-                tagline: 'Die Kunst der Erhaltung',
-                intro: 'Schicken Sie uns Ihre Anfrage zur Restaurierung oder Reparatur. Wir antworten persönlich über WhatsApp.',
-                label_name: 'Name',
-                placeholder_name: 'Ihr Name',
-                label_category: 'Kategorie',
-                placeholder_category: 'Bitte auswählen',
-                cat_shoes: 'Schuhe',
-                cat_bags: 'Taschen',
-                cat_leather: 'Lederwaren',
-                cat_other: 'Sonstiges',
-                cat_keys: 'Schlüssel',
-                label_description: 'Beschreibung des Schadens',
-                placeholder_description: 'Beschreiben Sie kurz das Problem oder den gewünschten Service…',
-                submit: 'Anfrage über WhatsApp senden',
-                contact_heading: 'Meisterwerkstatt',
-                msg_heading: 'Anfrage über die Website',
-                msg_name: 'Name',
-                msg_category: 'Kategorie',
-                msg_description: 'Beschreibung',
-                msg_photo_prompt: '*Ich werde unten Fotos des Stücks anhängen]*'
-            },
-            en: {
-                htmlLang: 'en',
-                docTitle: 'Kushnir Vienna - Master Workshop',
-                tagline: 'The Art of Preservation',
-                intro: 'Send us your restoration or repair request. We reply personally via WhatsApp.',
-                label_name: 'Name',
-                placeholder_name: 'Your name',
-                label_category: 'Category',
-                placeholder_category: 'Please select',
-                cat_shoes: 'Shoes',
-                cat_bags: 'Bags',
-                cat_leather: 'Leather goods',
-                cat_other: 'Other',
-                cat_keys: 'Keys',
-                label_description: 'Damage description',
-                placeholder_description: 'Briefly describe the issue or the service you need…',
-                submit: 'Send Request via WhatsApp',
-                contact_heading: 'Master Workshop',
-                msg_heading: 'Inquiry via the website',
-                msg_name: 'Name',
-                msg_category: 'Category',
-                msg_description: 'Description',
-                msg_photo_prompt: '*[I will attach photos of the item below]*'
-            }
-        };
+    <div class="footer-coords" aria-hidden="true">48.20°N · 16.35°E</div>
+  </div>
 
-        let currentLang = 'de';
+  <div class="footer-map">
+    <iframe
+      src="https://maps.google.com/maps?q=Hermanngasse%202A%2C%201070%20Wien%2C%20Austria&t=&z=16&ie=UTF8&iwloc=&output=embed"
+      width="100%"
+      height="320"
+      style="border:0;"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Atelier Kushnir — Hermanngasse 2A, 1070 Wien"
+      aria-label="Karte zum Atelier Kushnir, Hermanngasse 2A, 1070 Wien"
+    ></iframe>
+    <a class="footer-map-caption" href="https://maps.app.goo.gl/A3tJbrhKvgd1i7tw9" target="_blank" rel="noopener">
+      <span data-i18n="map_caption">Auf Google Maps öffnen</span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
 
-        function applyLanguage(lang) {
-            const t = translations[lang];
-            if (!t) return;
-            currentLang = lang;
-
-            document.documentElement.lang = t.htmlLang;
-            document.title = t.docTitle;
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (t[key] !== undefined) el.textContent = t[key];
-            });
-
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                const key = el.getAttribute('data-i18n-placeholder');
-                if (t[key] !== undefined) el.setAttribute('placeholder', t[key]);
-            });
-
-            document.querySelectorAll('.language-switcher button').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-            });
-        }
-
-        document.querySelectorAll('.language-switcher button').forEach(btn => {
-            btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
-        });
-
-        document.getElementById('leadForm').addEventListener('submit', (event) => {
-            event.preventDefault();
-            const form = event.currentTarget;
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-
-            const t = translations[currentLang];
-            const name = document.getElementById('name').value.trim();
-            const categorySelect = document.getElementById('category');
-            const categoryLabel = categorySelect.options[categorySelect.selectedIndex].textContent.trim();
-            const description = document.getElementById('description').value.trim();
-
-            const message =
-                `${t.msg_heading}\n\n` +
-                `${t.msg_name}: ${name}\n` +
-                `${t.msg_category}: ${categoryLabel}\n` +
-                `${t.msg_description}: ${description}\n\n` +
-                `${t.msg_photo_prompt}`;
-
-            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank', 'noopener');
-        });
-
-        applyLanguage('de');
-    </script>
+  <div class="footer-row footer-row--bottom">
+    <div class="footer-meta" data-i18n="footer">© Kushnir Wien · Hermanngasse 2A</div>
+  </div>
+</footer>
 
 </body>
 </html>
