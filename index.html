@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kushnir Wien - Meisterwerkstatt</title>
     <meta name="description" content="Meisterwerkstatt für Restaurierung und Pflege. Demnächst online.">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
@@ -15,6 +15,8 @@
             --color-text: #EAEAEA;
             --color-gold: #C0A172;
             --color-background: #1A1A1A;
+            --color-whatsapp: #25D366;
+            --color-whatsapp-dark: #1da851;
             --font-serif: 'Cormorant Garamond', serif;
             --font-sans: 'Jost', sans-serif;
         }
@@ -33,6 +35,9 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -59,13 +64,50 @@
             background-color: rgba(20, 20, 20, 0.85);
             backdrop-filter: blur(4px);
         }
-        
+
         .content-wrapper {
             max-width: 650px;
-            padding: 2rem;
+            width: 100%;
+            padding: 2.5rem 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.35);
             border-radius: 4px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .language-switcher {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .language-switcher button {
+            background: none;
+            border: none;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            letter-spacing: inherit;
+            cursor: pointer;
+            padding: 0.25rem 0.4rem;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .language-switcher button:hover {
+            color: #FFFFFF;
+        }
+
+        .language-switcher button.active {
+            color: var(--color-gold);
+        }
+
+        .language-switcher .sep {
+            opacity: 0.4;
         }
 
         .brand-name {
@@ -87,18 +129,121 @@
             margin: 0.5rem 0 2rem 0;
             text-transform: uppercase;
         }
-        
-        p {
-            font-size: 1.1rem;
+
+        .intro {
+            font-size: 1.05rem;
             line-height: 1.7;
             max-width: 500px;
             margin: 0 auto 2.5rem auto;
         }
 
+        .lead-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: left;
+            max-width: 480px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-field label {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--color-gold);
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--color-text);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            padding: 0.75rem 0.9rem;
+            outline: none;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 110px;
+            font-family: var(--font-sans);
+        }
+
+        .form-field select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23C0A172' d='M6 8L0 0h12z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .form-field select option {
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: var(--color-gold);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-field input::placeholder,
+        .form-field textarea::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 0.75rem;
+            padding: 1rem 1.5rem;
+            background-color: var(--color-whatsapp);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--color-whatsapp-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .submit-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #FFFFFF;
+        }
+
         .contact-info {
             border-top: 1px solid var(--color-gold);
-            padding-top: 2rem;
-            font-size: 1rem;
+            padding-top: 1.75rem;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.8);
         }
 
@@ -109,59 +254,25 @@
             font-weight: 400;
             letter-spacing: 1px;
         }
-        
-        .contact-info a {
-            color: inherit;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
 
-        .contact-info a:hover {
-            color: #FFFFFF;
-        }
-
-        .whatsapp-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 1.5rem;
-            background-color: #25D366;
-            color: #FFFFFF;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .whatsapp-link:hover {
-            background-color: #1da851;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
-        .phone-number {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
         @media (max-width: 600px) {
+            .content-wrapper {
+                padding: 3.25rem 1.25rem 2rem 1.25rem;
+            }
             .brand-name {
                 font-size: 2.5rem;
             }
             h1 {
                 font-size: 1rem;
             }
-            p {
-                font-size: 1rem;
+            .intro {
+                font-size: 0.95rem;
             }
-            .whatsapp-link {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.9rem;
+            .submit-btn {
+                padding: 0.9rem 1.2rem;
+                font-size: 0.95rem;
             }
         }
-
     </style>
 </head>
 <body>
@@ -169,19 +280,181 @@
     <div class="background-container"></div>
 
     <div class="content-wrapper">
+        <nav class="language-switcher" aria-label="Language">
+            <button type="button" data-lang="de" class="active">DE</button><span class="sep">|</span><button type="button" data-lang="en">EN</button>
+        </nav>
+
         <h2 class="brand-name">KUSHNIR</h2>
-        
-        <h1>Die Kunst der Erhaltung</h1>
-        
-        <p>
-            Unsere neue Online-Präsenz befindet sich derzeit in Arbeit. Für Anfragen zur Restaurierung und Pflege Ihrer wertvollsten Stücke stehen wir Ihnen wie gewohnt persönlich zur Verfügung.
+        <h1 data-i18n="tagline">Die Kunst der Erhaltung</h1>
+
+        <p class="intro" data-i18n="intro">
+            Schicken Sie uns Ihre Anfrage zur Restaurierung oder Reparatur. Wir antworten persönlich über WhatsApp.
         </p>
 
+        <form class="lead-form" id="leadForm" novalidate>
+            <div class="form-field">
+                <label for="name" data-i18n="label_name">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    autocomplete="name"
+                    data-i18n-placeholder="placeholder_name"
+                    placeholder="Ihr Name"
+                >
+            </div>
+
+            <div class="form-field">
+                <label for="category" data-i18n="label_category">Kategorie</label>
+                <select id="category" name="category" required>
+                    <option value="" disabled selected data-i18n="placeholder_category">Bitte auswählen</option>
+                    <option value="shoes" data-i18n="cat_shoes">Schuhe</option>
+                    <option value="bags" data-i18n="cat_bags">Taschen</option>
+                    <option value="leather" data-i18n="cat_leather">Lederwaren</option>
+                    <option value="other" data-i18n="cat_other">Sonstiges</option>
+                    <option value="keys" data-i18n="cat_keys">Schlüssel</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="description" data-i18n="label_description">Beschreibung des Schadens</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    required
+                    rows="4"
+                    data-i18n-placeholder="placeholder_description"
+                    placeholder="Beschreiben Sie kurz das Problem oder den gewünschten Service…"
+                ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                <span data-i18n="submit">Anfrage über WhatsApp senden</span>
+            </button>
+        </form>
+
         <div class="contact-info">
-            <strong>Kontaktieren Sie die Meisterwerkstatt</strong>
-            Hermanngasse 2A, 1070 Wien<br>
+            <strong data-i18n="contact_heading">Meisterwerkstatt</strong>
+            Hermanngasse 2A, 1070 Wien
         </div>
     </div>
+
+    <script>
+        // Replace with the artisan's real WhatsApp number in international format
+        // (country code, no '+', no spaces, no dashes). Example for Austria: 4366012345678
+        const WHATSAPP_NUMBER = '43XXXXXXXXXX';
+
+        const translations = {
+            de: {
+                htmlLang: 'de',
+                docTitle: 'Kushnir Wien - Meisterwerkstatt',
+                tagline: 'Die Kunst der Erhaltung',
+                intro: 'Schicken Sie uns Ihre Anfrage zur Restaurierung oder Reparatur. Wir antworten persönlich über WhatsApp.',
+                label_name: 'Name',
+                placeholder_name: 'Ihr Name',
+                label_category: 'Kategorie',
+                placeholder_category: 'Bitte auswählen',
+                cat_shoes: 'Schuhe',
+                cat_bags: 'Taschen',
+                cat_leather: 'Lederwaren',
+                cat_other: 'Sonstiges',
+                cat_keys: 'Schlüssel',
+                label_description: 'Beschreibung des Schadens',
+                placeholder_description: 'Beschreiben Sie kurz das Problem oder den gewünschten Service…',
+                submit: 'Anfrage über WhatsApp senden',
+                contact_heading: 'Meisterwerkstatt',
+                msg_heading: 'Anfrage über die Website',
+                msg_name: 'Name',
+                msg_category: 'Kategorie',
+                msg_description: 'Beschreibung',
+                msg_photo_prompt: '*📸 [Ich werde unten Fotos des Stücks anhängen]*'
+            },
+            en: {
+                htmlLang: 'en',
+                docTitle: 'Kushnir Vienna - Master Workshop',
+                tagline: 'The Art of Preservation',
+                intro: 'Send us your restoration or repair request. We reply personally via WhatsApp.',
+                label_name: 'Name',
+                placeholder_name: 'Your name',
+                label_category: 'Category',
+                placeholder_category: 'Please select',
+                cat_shoes: 'Shoes',
+                cat_bags: 'Bags',
+                cat_leather: 'Leather goods',
+                cat_other: 'Other',
+                cat_keys: 'Keys',
+                label_description: 'Damage description',
+                placeholder_description: 'Briefly describe the issue or the service you need…',
+                submit: 'Send Request via WhatsApp',
+                contact_heading: 'Master Workshop',
+                msg_heading: 'Inquiry via the website',
+                msg_name: 'Name',
+                msg_category: 'Category',
+                msg_description: 'Description',
+                msg_photo_prompt: '*📸 [I will attach photos of the item below]*'
+            }
+        };
+
+        let currentLang = 'de';
+
+        function applyLanguage(lang) {
+            const t = translations[lang];
+            if (!t) return;
+            currentLang = lang;
+
+            document.documentElement.lang = t.htmlLang;
+            document.title = t.docTitle;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined) el.textContent = t[key];
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (t[key] !== undefined) el.setAttribute('placeholder', t[key]);
+            });
+
+            document.querySelectorAll('.language-switcher button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+        }
+
+        document.querySelectorAll('.language-switcher button').forEach(btn => {
+            btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+        });
+
+        document.getElementById('leadForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const form = event.currentTarget;
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const t = translations[currentLang];
+            const name = document.getElementById('name').value.trim();
+            const categorySelect = document.getElementById('category');
+            const categoryLabel = categorySelect.options[categorySelect.selectedIndex].textContent.trim();
+            const description = document.getElementById('description').value.trim();
+
+            const message =
+                `${t.msg_heading}\n\n` +
+                `${t.msg_name}: ${name}\n` +
+                `${t.msg_category}: ${categoryLabel}\n` +
+                `${t.msg_description}: ${description}\n\n` +
+                `${t.msg_photo_prompt}`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank', 'noopener');
+        });
+
+        applyLanguage('de');
+    </script>
 
 </body>
 </html>
