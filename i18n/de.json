@@ -2,7 +2,7 @@
   "htmlLang": "de",
   "docTitle": "Atelier Kushnir — Wien",
 
-  "est": "Atelier — Seit 1992",
+  "topbar_ig": "Unser Instagram",
   "eyebrow": "Wien · 1070",
   "tagline": "Seit 1992.",
   "intro1": "Ein Familienatelier in Wien für Stücke, an denen Sie hängen.",
@@ -58,8 +58,6 @@
 
   "social_google": "Google",
   "footer_addr": "Hermanngasse 2A · 1070 Wien",
-  "footer": "© Kushnir Wien · Hermanngasse 2A",
-  "map_caption": "Auf Google Maps öffnen",
 
   "msg_heading": "Anfrage über die Website",
   "msg_name": "Name",
