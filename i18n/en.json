@@ -2,10 +2,10 @@
   "htmlLang": "en",
   "docTitle": "Atelier Kushnir — Vienna",
 
-  "est": "Master Workshop — Since 1992",
+  "est": "Atelier — Since 1992",
   "eyebrow": "Vienna · 1070",
-  "tagline": "Workshop since 1992.",
-  "intro1": "A family workshop in Vienna for the pieces you're attached to.",
+  "tagline": "Atelier since 1992.",
+  "intro1": "A family atelier in Vienna for the pieces you're attached to.",
   "intro2": "Shoes, bags, leather goods, from daily companions to those from the great houses. Every piece deserves an honest assessment and a careful hand.",
   "signoff": "— The Kushnir Family",
 
@@ -50,7 +50,6 @@
 
   "t_eb": "Words from our customers",
   "t_h": "What people say.",
-  "t_basis": "— based on {count} Google reviews",
   "t_see_label": "Or leave one yourself — ",
   "t_see_link": "on Google",
   "t_show_all": "Show all reviews",
