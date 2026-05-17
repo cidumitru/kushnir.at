@@ -1,0 +1,40 @@
+.services {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.svc {
+  padding: 2.5rem 2.5rem;
+  border-right: 1px solid var(--rule);
+}
+.svc:last-child { border-right: none; }
+.svc-num {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+.svc-name {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0 0 0.5rem 0;
+}
+.svc-desc {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 28ch;
+}
+
+@media (max-width: 900px) {
+  .services { grid-template-columns: 1fr; }
+  .svc {
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+    padding: 1.75rem 1.25rem;
+  }
+  .svc:last-child { border-bottom: none; }
+}

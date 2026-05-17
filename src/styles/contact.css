@@ -1,0 +1,49 @@
+.contact-card {
+  background: var(--bg-2);
+  padding: 2.5rem;
+  position: relative;
+}
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  border: 1px solid var(--rule);
+  pointer-events: none;
+}
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+.contact-row:last-of-type { border-bottom: none; }
+.contact-row .day {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+.contact-row .closed {
+  color: var(--accent);
+  font-style: italic;
+  font-family: var(--serif);
+}
+.address {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.address strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+.address .small {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}

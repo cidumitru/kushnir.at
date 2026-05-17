@@ -1,0 +1,36 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.topbar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.topbar-link:hover { color: var(--accent); }
+.topbar-link svg { flex-shrink: 0; }
+.lang { display: flex; gap: 0.4rem; align-items: center; }
+.lang button {
+  background: none; border: none; padding: 0.2rem 0.3rem;
+  font: inherit; letter-spacing: inherit; text-transform: inherit;
+  color: var(--ink-soft); cursor: pointer;
+}
+.lang button.active {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .topbar { padding: 1rem 1.25rem; }
+}
