@@ -1,0 +1,95 @@
+.main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+}
+.section-head {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 2.2rem;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.01em;
+}
+.section-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.75rem;
+}
+.form-intro {
+  color: var(--ink-soft);
+  max-width: 40ch;
+  margin: 0;
+}
+
+.form { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem; }
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+.field label {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.field input, .field select, .field textarea {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.6rem 0;
+  outline: none;
+  transition: border-color 0.2s;
+  border-radius: 0;
+}
+.field textarea {
+  border: 1px solid var(--rule);
+  padding: 0.75rem;
+  min-height: 110px;
+  resize: vertical;
+  font-family: var(--sans);
+}
+.field select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%231C1A17' d='M5 6L0 0h10z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.2rem center;
+  padding-right: 1.5rem;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--accent);
+}
+.field input::placeholder, .field textarea::placeholder { color: #A8A096; }
+.submit {
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 1.5rem;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 0;
+}
+.submit:hover { background: var(--accent); }
+.submit svg { width: 16px; height: 16px; fill: currentColor; }
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.25rem;
+    gap: 3rem;
+  }
+}
