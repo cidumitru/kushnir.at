@@ -217,6 +217,39 @@ function bindLangSwitcher() {
   });
 }
 
+/* ——— Map lazy-load ———————————————————————————————————— */
+
+const MAP_SRC = 'https://maps.google.com/maps?q=Atelier%20Kushnir%2C%20Hermanngasse%202A%2C%201070%20Wien%2C%20Austria&t=&z=17&ie=UTF8&iwloc=A&output=embed';
+
+function lazyLoadMap() {
+  const container = document.getElementById('footer-map');
+  if (!container || container.querySelector('iframe')) return;
+
+  const insert = () => {
+    if (container.querySelector('iframe')) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = MAP_SRC;
+    iframe.loading = 'lazy';
+    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.title = 'Atelier Kushnir — Hermanngasse 2A, 1070 Wien';
+    iframe.setAttribute('aria-label', 'Karte zum Atelier Kushnir, Hermanngasse 2A, 1070 Wien');
+    container.appendChild(iframe);
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    insert();
+    return;
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    if (entries.some(e => e.isIntersecting)) {
+      observer.disconnect();
+      insert();
+    }
+  }, { rootMargin: '600px 0px' });
+  observer.observe(container);
+}
+
 /* ——— Boot ————————————————————————————————————————————— */
 
 function pickInitialLang() {
@@ -231,6 +264,7 @@ async function boot() {
   bindForm();
   bindLangSwitcher();
   bindReviewsToggle();
+  lazyLoadMap();
 
   const initialLang = pickInitialLang();
 
