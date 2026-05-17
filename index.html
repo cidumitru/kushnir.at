@@ -6,11 +6,610 @@
   <title>Atelier Kushnir — Wien</title>
   <meta name="description" content="Familiengeführtes Atelier in Wien. Schuhreparatur, Lederpflege, Schlüsseldienst.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/fraunces-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    @font-face {
+      font-family: 'Fraunces';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url('fonts/fraunces-regular.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Fraunces';
+      font-style: italic;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url('fonts/fraunces-italic.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url('fonts/inter-regular.woff2') format('woff2');
+    }
+
+    :root {
+      --bg: #F5F1EA;
+      --bg-2: #ECE6DA;
+      --ink: #1C1A17;
+      --ink-soft: #5B544A;
+      --rule: #C9C1B0;
+      --accent: #8B2A1F;
+      --wa: #25D366;
+      --wa-dark: #1da851;
+      --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+      font-weight: 400;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .topbar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .topbar-link:hover { color: var(--accent); }
+    .topbar-link svg { flex-shrink: 0; }
+    .lang { display: flex; gap: 0.4rem; align-items: center; }
+    .lang button {
+      background: none; border: none; padding: 0.2rem 0.3rem;
+      font: inherit; letter-spacing: inherit; text-transform: inherit;
+      color: var(--ink-soft); cursor: pointer;
+    }
+    .lang button.active {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      align-items: end;
+      padding: 5rem 2.5rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 55%;
+      background-image: url('hero-bg.svg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.28;
+      filter: sepia(0.6) saturate(1.1) brightness(1.5);
+      z-index: -1;
+      mask-image: linear-gradient(to left, black 10%, transparent 95%);
+      -webkit-mask-image: linear-gradient(to left, black 10%, transparent 95%);
+    }
+    .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.5rem 0;
+    }
+    .brand em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+    .tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--ink-soft);
+      font-weight: 400;
+      margin: 0;
+      max-width: 28ch;
+    }
+    .hero-meta {
+      border-left: 1px solid var(--rule);
+      padding-left: 2rem;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+    .hero-meta p { margin: 0 0 1rem 0; max-width: 36ch; }
+    .hero-meta .signoff {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink);
+      margin-top: 1.5rem;
+    }
+
+    .services {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .svc {
+      padding: 2.5rem 2.5rem;
+      border-right: 1px solid var(--rule);
+    }
+    .svc:last-child { border-right: none; }
+    .svc-num {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--accent);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+    .svc-name {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin: 0 0 0.5rem 0;
+    }
+    .svc-desc {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 28ch;
+    }
+
+    .declaration {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3.5rem 2.5rem;
+    }
+    .declaration-inner {
+      text-align: center;
+      max-width: 56ch;
+      margin: 0 auto;
+      padding: 0 1rem 2.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .declaration-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .declaration-body {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.45;
+      color: var(--ink);
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+    .section-head {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 2.2rem;
+      margin: 0 0 1.5rem 0;
+      letter-spacing: -0.01em;
+    }
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.75rem;
+    }
+    .form-intro {
+      color: var(--ink-soft);
+      max-width: 40ch;
+      margin: 0;
+    }
+
+    .form { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem; }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .field input, .field select, .field textarea {
+      font-family: var(--sans);
+      font-size: 1rem;
+      color: var(--ink);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 0.6rem 0;
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+    }
+    .field textarea {
+      border: 1px solid var(--rule);
+      padding: 0.75rem;
+      min-height: 110px;
+      resize: vertical;
+      font-family: var(--sans);
+    }
+    .field select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%231C1A17' d='M5 6L0 0h10z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 0.2rem center;
+      padding-right: 1.5rem;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--accent);
+    }
+    .field input::placeholder, .field textarea::placeholder { color: #A8A096; }
+    .submit {
+      margin-top: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem 1.5rem;
+      background: var(--ink);
+      color: var(--bg);
+      border: none;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      border-radius: 0;
+    }
+    .submit:hover { background: var(--accent); }
+    .submit svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .contact-card {
+      background: var(--bg-2);
+      padding: 2.5rem;
+      position: relative;
+    }
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      border: 1px solid var(--rule);
+      pointer-events: none;
+    }
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.95rem;
+    }
+    .contact-row:last-of-type { border-bottom: none; }
+    .contact-row .day {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    .contact-row .closed {
+      color: var(--accent);
+      font-style: italic;
+      font-family: var(--serif);
+    }
+    .address {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+    .address strong {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+    .address .small {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    .testimonials-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem 3rem;
+      border-top: 1px solid var(--rule);
+    }
+    .testimonials-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+    .testimonials-header h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .testimonials-header h2 em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .rating-line {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+    .rating-line .stars {
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      font-style: normal;
+    }
+    .rating-line .score {
+      color: var(--accent);
+      font-weight: 600;
+      font-style: normal;
+      font-family: var(--sans);
+      letter-spacing: 0.05em;
+    }
+    .reviews-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 3.5rem;
+    }
+    .review-item {
+      position: relative;
+      padding: 0 0 0 2rem;
+      border-left: 1px solid var(--rule);
+    }
+    .review-item .mark-q {
+      position: absolute;
+      left: -0.4rem;
+      top: -1.2rem;
+      font-family: var(--serif);
+      font-size: 4rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .review-item .body {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: var(--ink);
+      margin: 0 0 1rem 0;
+    }
+    .review-item .attr {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.02em;
+    }
+    .review-item .attr strong {
+      font-family: var(--serif);
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 0.95rem;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .review-item .stars {
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+    .reviews-list[data-expanded="false"] .review-item.is-extra { display: none; }
+    .reviews-list[data-expanded="true"] .review-item.is-extra {
+      animation: fadeIn 0.5s ease both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reviews-controls {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .show-all-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.75rem;
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 0;
+    }
+    .show-all-btn:hover { background: var(--ink); color: var(--bg); }
+    .see-all-line {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--ink-soft);
+    }
+    .see-all-line a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--rule);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .footer-row {
+      padding: 1.5rem 2.5rem;
+      display: grid;
+      align-items: center;
+      gap: 2rem;
+    }
+    .footer-row--top {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      border-bottom: 1px solid var(--rule);
+    }
+    .footer-row--bottom {
+      grid-template-columns: 1fr;
+      text-align: center;
+      border-top: 1px solid var(--rule);
+    }
+    .footer-brand .mark {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+    .footer-addr {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .footer-social {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: var(--accent); }
+    .footer-social svg { flex-shrink: 0; }
+
+    .footer-map {
+      background: var(--bg-2);
+      min-height: 320px;
+    }
+    .footer-map iframe {
+      display: block;
+      width: 100%;
+      height: 320px;
+      border: 0;
+      filter: grayscale(0.65) sepia(0.15) contrast(0.95) brightness(0.97);
+      transition: filter 0.4s ease;
+    }
+    .footer-map:hover iframe {
+      filter: grayscale(0.1) sepia(0.05) contrast(1) brightness(1);
+    }
+
+    @media (max-width: 900px) {
+      .topbar { padding: 1rem 1.25rem; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.25rem 2.5rem;
+        gap: 2rem;
+      }
+      .hero-meta {
+        border-left: none;
+        border-top: 1px solid var(--rule);
+        padding: 2rem 0 0 0;
+      }
+      .services { grid-template-columns: 1fr; }
+      .svc {
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+        padding: 1.75rem 1.25rem;
+      }
+      .svc:last-child { border-bottom: none; }
+      .declaration { padding: 2rem 1.25rem; }
+      .declaration-body { font-size: 1.1rem; }
+      .main {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.25rem;
+        gap: 3rem;
+      }
+      .footer-row { padding: 1.25rem 1.25rem; gap: 1rem; }
+      .footer-brand { text-align: center; }
+      .footer-social { justify-content: center; flex-wrap: wrap; gap: 1rem; }
+      .footer-map { min-height: 240px; }
+      .footer-map iframe { height: 240px; }
+      .testimonials-section { padding: 3rem 1.25rem 2rem; }
+      .testimonials-header {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .reviews-list { grid-template-columns: 1fr; gap: 2rem; }
+      .review-item .body { font-size: 1.1rem; }
+    }
+  </style>
 
   <script type="application/ld+json" id="business-schema">
   {
@@ -73,6 +672,8 @@
   </nav>
 </header>
 
+<main>
+
 <section class="hero">
   <div>
     <div class="eyebrow" data-i18n="eyebrow">Wien · 1070</div>
@@ -89,17 +690,17 @@
 <section class="services">
   <div class="svc">
     <div class="svc-num">N° 01</div>
-    <h3 class="svc-name" data-i18n="s1_name">Schuhreparatur</h3>
+    <h2 class="svc-name" data-i18n="s1_name">Schuhreparatur</h2>
     <p class="svc-desc" data-i18n="s1_desc">Sohlen, Absätze, Nähte. Für Schuhe, die noch viele Jahre gehen sollen.</p>
   </div>
   <div class="svc">
     <div class="svc-num">N° 02</div>
-    <h3 class="svc-name" data-i18n="s2_name">Lederpflege</h3>
+    <h2 class="svc-name" data-i18n="s2_name">Lederpflege</h2>
     <p class="svc-desc" data-i18n="s2_desc">Reinigung, Farbauffrischung, Reparaturen für Taschen und feines Leder.</p>
   </div>
   <div class="svc">
     <div class="svc-num">N° 03</div>
-    <h3 class="svc-name" data-i18n="s3_name">Auch Schlüsseldienst</h3>
+    <h2 class="svc-name" data-i18n="s3_name">Auch Schlüsseldienst</h2>
     <p class="svc-desc" data-i18n="s3_desc">Schlüssel, Zylinder, Schliessanlagen.</p>
   </div>
 </section>
@@ -194,6 +795,8 @@
   </div>
 </section>
 
+</main>
+
 <footer class="footer">
   <div class="footer-row footer-row--top">
     <nav class="footer-social" aria-label="Social media">
@@ -212,18 +815,8 @@
     </nav>
   </div>
 
-  <div class="footer-map">
-    <iframe
-      src="https://maps.google.com/maps?q=Atelier%20Kushnir%2C%20Hermanngasse%202A%2C%201070%20Wien%2C%20Austria&t=&z=17&ie=UTF8&iwloc=A&output=embed"
-      width="100%"
-      height="320"
-      style="border:0;"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Atelier Kushnir — Hermanngasse 2A, 1070 Wien"
-      aria-label="Karte zum Atelier Kushnir, Hermanngasse 2A, 1070 Wien"
-    ></iframe>
-  </div>
+  <!-- The map iframe ships ~350 KiB of JS. We reserve the space and let main.js inject the iframe via IntersectionObserver when the user scrolls near, so it never blocks initial load. -->
+  <div class="footer-map" id="footer-map"></div>
 
   <div class="footer-row footer-row--bottom">
     <div class="footer-brand">
