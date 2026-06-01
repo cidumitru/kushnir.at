@@ -81,8 +81,10 @@
     border-top: 1px solid var(--rule);
     padding: 2rem 0 0 0;
   }
-  /* Keep the subject (right side of the photo) in frame on narrow screens */
+  /* Keep the subject (right side of the photo) in frame on narrow screens,
+     nudged right so the overlapping text doesn't cover him */
   .hero::before {
     background-position: right center;
+    transform: translateX(150px);
   }
 }
