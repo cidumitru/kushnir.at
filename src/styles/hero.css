@@ -14,11 +14,15 @@
   position: absolute;
   top: 0; right: 0; bottom: 0;
   width: 55%;
-  background-image: url('/hero-bg.svg');
+  background-image: url('/images/cover.jpg');
+  background-image: image-set(
+    url('/images/cover.webp') type('image/webp'),
+    url('/images/cover.jpg') type('image/jpeg')
+  );
   background-size: cover;
   background-position: center;
-  opacity: 0.28;
-  filter: sepia(0.6) saturate(1.1) brightness(1.5);
+  opacity: 0.4;
+  filter: sepia(0.25) saturate(1.05) brightness(1.1);
   z-index: -1;
   mask-image: linear-gradient(to left, black 10%, transparent 95%);
   -webkit-mask-image: linear-gradient(to left, black 10%, transparent 95%);
